@@ -2,7 +2,7 @@
 
 // Función principal que verifica si la expresión está equilibrada
 function estaEquilibrada(expresion) {
-  const pila = [];
+  const delimitadoresAbiertos = []; // Guardamos los delimitadores que se van abriendo
   const pares = {
     ')': '(',
     ']': '[',
@@ -11,20 +11,22 @@ function estaEquilibrada(expresion) {
 
   for (let caracter of expresion) {
     if (caracter === '(' || caracter === '[' || caracter === '{') {
-      pila.push(caracter); // Apilamos los delimitadores de apertura
+      delimitadoresAbiertos.push(caracter); // Agregamos el delimitador de apertura
     } else if (caracter === ')' || caracter === ']' || caracter === '}') {
-      if (pila.length === 0) return false; // No hay apertura para cerrar
-      const ultimo = pila.pop(); // Sacamos el último abierto
-      if (ultimo !== pares[caracter]) return false; // No hacen pareja
+      if (delimitadoresAbiertos.length === 0) return false; // Cierre sin apertura previa
+      const ultimoAbierto = delimitadoresAbiertos.pop(); // Tomamos el último abierto
+      if (ultimoAbierto !== pares[caracter]) return false; // No corresponde el cierre
     }
   }
 
-  return pila.length === 0; // Si queda algo en la pila, está desequilibrado
+  return delimitadoresAbiertos.length === 0; // Si no quedó nada abierto, está equilibrado
 }
 
+// Mensaje guía en consola
 console.log("Usa la función estaEquilibrada(expresion) para verificar tu expresión.");
 console.log("Ejemplo: estaEquilibrada('({[]})')");
 
-// estaEquilibrada('({[]})') // true
-// estaEquilibrada('([)]') // false
-// estaEquilibrada('hola') // true
+// Pruebas manuales 
+// console.log(estaEquilibrada('({[]})')); // true
+// console.log(estaEquilibrada('([)]'));   // false
+// console.log(estaEquilibrada('hola'));   // true
