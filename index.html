@@ -4,9 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validador de Expresiones Equilibradas</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>Validador de Expresiones- Reto #1</h1>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <h1>Validador de Expresiones</h1>
+            </div>
+            <p class="subtitle">Verifica si tus delimitadores están equilibrados</p>
+        </header>
+
+        <main class="main-content">
+            <div class="validator-card">
+                <div class="input-section">
+                    <label for="expression-input" class="input-label">
+                        <i class="fas fa-keyboard"></i>
+                        Ingresa tu expresión:
+                    </label>
+                    <div class="input-container">
+                        <input 
+                            type="text" 
+                            id="expression-input" 
+                            class="expression-input"
+                            placeholder="Ejemplo: ({[]}) o (a + b) * [c - d]"
+                            autocomplete="off"
+                        >
+                        <button id="validate-btn" class="validate-btn">
+                            <i class="fas fa-check"></i>
+                            Validar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="result-section" id="result-section">
+                    <div class="result-placeholder">
+                        <i class="fas fa-arrow-up"></i>
+                        <p>Ingresa una expresión para validar</p>
+                    </div>
+                </div>
+
+                <div class="examples-section">
+                    <h3><i class="fas fa-lightbulb"></i> Ejemplos de uso:</h3>
+                    <div class="examples-grid">
+                        <div class="example-item" data-example="({[]})">
+                            <code>({[]})</code>
+                            <span class="example-result balanced">✓ Equilibrado</span>
+                        </div>
+                        <div class="example-item" data-example="([)]">
+                            <code>([)]</code>
+                            <span class="example-result unbalanced">✗ No equilibrado</span>
+                        </div>
+                        <div class="example-item" data-example="(a + b) * [c - d]">
+                            <code>(a + b) * [c - d]</code>
+                            <span class="example-result balanced">✓ Equilibrado</span>
+                        </div>
+                        <div class="example-item" data-example="{[()]}">
+                            <code>{[()]}</code>
+                            <span class="example-result balanced">✓ Equilibrado</span>
+                        </div>
+                        <div class="example-item" data-example="(((">
+                            <code>(((</code>
+                            <span class="example-result unbalanced">✗ No equilibrado</span>
+                        </div>
+                        <div class="example-item" data-example="hola mundo">
+                            <code>hola mundo</code>
+                            <span class="example-result balanced">✓ Equilibrado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3><i class="fas fa-info-circle"></i> Información</h3>
+                <div class="info-content">
+                    <div class="info-item">
+                        <h4>Delimitadores válidos:</h4>
+                        <div class="delimiters">
+                            <span class="delimiter">( )</span>
+                            <span class="delimiter">[ ]</span>
+                            <span class="delimiter">{ }</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <h4>Reglas de validación:</h4>
+                        <ul>
+                            <li>Cada apertura debe tener su cierre correspondiente</li>
+                            <li>Los delimitadores anidados deben cerrarse en orden inverso</li>
+                            <li>Se ignoran letras, números y operadores</li>
+                            <li>Una expresión sin delimitadores se considera equilibrada</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Desarrollado con ❤️ por <a href="https://github.com/DanielSantiagoV" target="_blank">Daniel Santiago Vinasco</a></p>
+            <div class="social-links">
+                <a href="https://github.com/DanielSantiagoV" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:vinascodaniel9@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
     <script src="./js/validador.js"></script>
 </body>
 </html>
